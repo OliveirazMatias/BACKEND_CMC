@@ -3,7 +3,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../config/sequelize');
 
-const idtipos = sequelize.define('Idtiposs', {
+const Tipos_Usuario = sequelize.define('Tipos_Usuario', {
     //Define as informações da tabela colunas
 
     idTipos_Usuarios:{
@@ -19,4 +19,4 @@ const idtipos = sequelize.define('Idtiposs', {
     timestamps: false
 });
 
-module.exports = idtipos;
+module.exports = Tipos_Usuario;

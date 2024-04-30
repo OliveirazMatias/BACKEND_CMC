@@ -3,7 +3,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../config/sequelize');
 
-const turmas = sequelize.define('Turmas', {
+const Turmas = sequelize.define('Turmas', {
     //Define as informações da tabela colunas
 
     idTurmas:{
@@ -23,4 +23,4 @@ const turmas = sequelize.define('Turmas', {
     timestamps: false
 });
 
-module.exports = turmas;
+module.exports = Turmas;
