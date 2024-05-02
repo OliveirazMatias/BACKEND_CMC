@@ -4,12 +4,14 @@ exports.getAll = async (req, res) => {
     res.json(usuarios)
 };
 
+//Procurando usuario por id
 exports.getById = async (req, res) => {
     const idDoParam = req.params.id;
     const usuarioEncontrado = await  Usuario.findOne({idUsarios: idDoParam});
     res.json(usuarioEncontrado)
 };
 
+//Criação e verificação de usuario com msm cpf
 exports.createUsuario = async (req, res) => {
     const usuarioCadastrado = await Usuario.findOne({ where: {cpf : req.body.cpf}});
     if (usuarioCadastrado) {

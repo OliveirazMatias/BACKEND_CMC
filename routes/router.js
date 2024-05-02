@@ -10,6 +10,7 @@ router.post('/usuario', usuarioController.createUsuario);
 
 router.get('/turma', turmaController.getAll);
 router.get('/turma/:id', turmaController.getById);
+router.put('/turma/:codigo', turmaController.updateTurma);
 
 router.post('/turma', turmaController.createTurma);
 
