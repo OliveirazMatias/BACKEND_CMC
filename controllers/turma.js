@@ -11,6 +11,11 @@ exports.getById = async (req, res) => {
 };
 
 exports.createTurma = async (req, res) => {
+    const turmasCadastrado = await Turmas.findOne({ where: {codigo : req.body.codigo}});
+    if (turmasCadastrado) {
+        return res.send('Já existe uma turma cadastrada neste codigo, viadinho.')
+    }
+
     const turmaCriada = await Turmas.create(req.body);
     console.log("turmaCriada", turmaCriada);
     return res.send("Deu certo viadinho")
