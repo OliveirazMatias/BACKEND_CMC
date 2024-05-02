@@ -6,7 +6,7 @@ exports.getAll = async (req, res) => {
 
 exports.getById = async (req, res) => {
     const idDoParamTur = req.params.id;
-    const turmaEncontrada = await  Turmas.findOne({idTurmas: idDoParamTur});
+    const turmaEncontrada = await Turmas.findOne({idTurmas: idDoParamTur});
     res.json(turmaEncontrada)
 };
 
