@@ -18,5 +18,5 @@ exports.createTurma = async (req, res) => {
 
     const turmaCriada = await Turmas.create(req.body);
     console.log("turmaCriada", turmaCriada);
-    return res.send("Deu certo viadinho")
+    return res.send("Deu certo viadinho.")
 };
