@@ -25,21 +25,18 @@ exports.createTurma = async (req, res) => {
 
 //Dar update em turmas (trocar nome e outros)
 exports.updateTurma = async (req, res) => {
-    const codigoTurma = req.params.updateTurma;
+    const codigoTurma = req.params.codigo;
     try {
-        const turmasCadastrado = await Turmas.findOne({ where: { codigo: req.body.codigo } });
-        if (turmasCadastrado) {
-            return res.send('Já existe uma turma cadastrada neste codigo, viadinho.')
-        }
-
+        const turmasCadastrado = await Turmas.findOne({ where: { codigo: codigoTurma } });
         if (turmasCadastrado) {
             delete req.body.codigo;
-
-            const [numRowUpdated] = await Turmas.update(req.body, {
-                where: { codigo: codigoTurma }
-            });
-        }
+            await turmasCadastrado.update(req.body);
+            
+            return res.json({ message: 'Turma atualizada com sucesso', turma: turmasCadastrado });
+        } 
     } catch (error) {
-
+        // Tratamento de erros
+        console.error('Erro ao atualizar a turma:', error);
+        return res.status(500).json({ error: 'Erro ao atualizar a turma' });
     }
-}
+};

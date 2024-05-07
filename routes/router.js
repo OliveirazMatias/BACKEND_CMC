@@ -5,6 +5,7 @@ const turmaController = require("../controllers/turma")
 
 router.get('/usuario', usuarioController.getAll);
 router.get('/usuario/:id', usuarioController.getById);
+router.put('/usuario/:cpf', usuarioController.updateUsuario);
 
 router.post('/usuario', usuarioController.createUsuario);
 
