@@ -17,6 +17,13 @@ exports.createUsuario = async (req, res) => {
     }
 
     const usuarioCriado = await Usuario.create(req.body);
+
+    if (usuarioCriado.idUsuarios) {
+        await UsuariosTurmas.create ({
+            turmas_idTurmas: req.body.idTurmas,
+            Usuarios_idUsuarios: usuarioCriado.idUsuarios
+        })
+    }
     console.log("usuarioCriado", usuarioCriado);
     return res.send("Deu certo")
 };
