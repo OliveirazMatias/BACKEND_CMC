@@ -59,3 +59,23 @@ exports.updateControllerNome = async (req, res) => {
         return res.status(500).send('Ocorreu um erro ao atualizar o usuário.');
     }
 };
+
+exports.deleteUsuario = async (req,res) => {
+    try {
+        const { id } = req.params;
+        const usuarios = await Usuario.findByPk(id);
+        if (!usuarios) {
+            return res.status(404).send('Usuario não encontrado.');
+        }
+        const desvincular = await UsuariosTurmas.findOne({ where: {Usuarios_idUsuarios: usuarios.idUsuarios} });
+        if (desvincular) {
+            await desvincular.destroy();
+        }
+        await usuarios.destroy();
+
+        return res.send('Usuario deletado com sucesso.');
+    } catch (error) {
+        console.error('Erro ao deletar usuario', error);
+        return res.status(500).send('Erro ao deletar usuario.');
+    };
+};

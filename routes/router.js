@@ -10,6 +10,7 @@ router.get('/usuario/:id', usuarioController.getById);
 router.post('/usuario', usuarioController.createUsuario);
 
 router.put('/usuario/:cpf', usuarioController.updateControllerNome);
+router.delete('/usuario/:id', usuarioController.deleteUsuario);
 
 
 router.get('/turmas', turmasController.getAll);
